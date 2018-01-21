@@ -1,6 +1,6 @@
 UiUrlDirective
 =================
-``Element`` Directive for model values like urls.
+``Element`` directive for model values like urls.
 
 Files
 ~~~~~
