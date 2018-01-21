@@ -93,7 +93,11 @@
             
             
               <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Project Structure</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Project Structure</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#configurations">Configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#panels">Panels</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="controllers.html">Controllers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="directives.html">Directives</a></li>
 <li class="toctree-l1"><a class="reference internal" href="services.html">Services</a></li>
@@ -177,12 +181,12 @@
 <li><dl class="first docutils">
 <dt><code class="docutils literal"><span class="pre">shared/</span></code>: components shared between all the panels</dt>
 <dd><ul class="first last">
-<li><code class="docutils literal"><span class="pre">controllers/</span></code></li>
-<li><code class="docutils literal"><span class="pre">directives/</span></code></li>
-<li><code class="docutils literal"><span class="pre">filters/</span></code></li>
-<li><code class="docutils literal"><span class="pre">interceptors/</span></code></li>
-<li><code class="docutils literal"><span class="pre">partials/</span></code></li>
-<li><code class="docutils literal"><span class="pre">services/</span></code></li>
+<li><code class="docutils literal"><span class="pre">controllers/</span></code>: core controllers</li>
+<li><code class="docutils literal"><span class="pre">directives/</span></code>: core directives</li>
+<li><code class="docutils literal"><span class="pre">filters/</span></code>: core filters</li>
+<li><code class="docutils literal"><span class="pre">interceptors/</span></code>: core http interceptors</li>
+<li><code class="docutils literal"><span class="pre">partials/</span></code>: directives and generic html partials</li>
+<li><code class="docutils literal"><span class="pre">services/</span></code>: core and helper services</li>
 </ul>
 </dd>
 </dl>
@@ -196,6 +200,40 @@
 </dl>
 </li>
 </ul>
+<div class="section" id="configurations">
+<h2>Configurations<a class="headerlink" href="#configurations" title="Permalink to this headline">¶</a></h2>
+<p>Columnis Manager configurations is located inside de folder <code class="docutils literal"><span class="pre">src/app/configs</span></code>, all the configurations has the <code class="docutils literal"><span class="pre">.json</span></code> extension, in runtime each file generates a <code class="docutils literal"><span class="pre">.js</span></code> files and the project uses this JavaScripts files.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you make changes to <code class="docutils literal"><span class="pre">.json</span></code> files, you must run again the project to see the changes.</p>
+</div>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">config.json</span></code>: general configurations</li>
+<li><code class="docutils literal"><span class="pre">requirejs.conf.json</span></code>: requires configuration with all dependencies of third-party libraries</li>
+<li><code class="docutils literal"><span class="pre">translate.json</span></code>: general translations</li>
+<li><code class="docutils literal"><span class="pre">dependencies.json</span></code>: all core <code class="docutils literal"><span class="pre">.js</span></code> files</li>
+<li><code class="docutils literal"><span class="pre">async.dependencies.json</span></code>: third-party libraries who can loads from any <code class="docutils literal"><span class="pre">state.json</span></code>.</li>
+</ul>
+</div>
+<div class="section" id="panels">
+<h2>Panels<a class="headerlink" href="#panels" title="Permalink to this headline">¶</a></h2>
+<p>All the panels files are placed here in the folder <code class="docutils literal"><span class="pre">src/app/panels</span></code>, the panel must have this structure:</p>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt><code class="docutils literal"><span class="pre">[PANEL_NAME]</span></code></dt>
+<dd><ul class="first last">
+<li>controllers/<code class="docutils literal"><span class="pre">[PANEL_NAME]Controller.js</span></code></li>
+<li>services/<code class="docutils literal"><span class="pre">[PANEL_NAME]Service.js</span></code> <cite>(optional)</cite></li>
+<li>partials/index.html</li>
+<li>config.js</li>
+<li>menu.json <cite>(only for root states)</cite></li>
+<li>translate.js</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
 </div>
 
 
