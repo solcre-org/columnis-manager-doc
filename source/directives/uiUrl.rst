@@ -14,7 +14,7 @@ Options
 Directive options from ``scope`` vars:
 
 ======================  ==================  ===============================
-         Option                Type                     Comments
+ Option                  Type                Comments
 ======================  ==================  ===============================
  ``obj``                 Two way bindings    Model reference
  ``label``               Text                Text with label text
