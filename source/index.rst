@@ -1,15 +1,17 @@
-Welcome to Columnis Manager's documentation!
-============================================
+Columnis Manager Documentation
+===============================
+
+Columnis Manager is a content manager, which allows us to manage photos, videos, texts, products and much more.
+
+Contents
+========
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
 
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+   structure
+   controllers
+   directives
+   services
+   filters
+   grunt
