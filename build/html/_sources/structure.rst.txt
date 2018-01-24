@@ -14,6 +14,9 @@ The Columnis Manager code is located inside the ``src/app`` folder, where we wil
             - ``interceptors/``: core http interceptors
             - ``partials/``: directives and generic html partials
             - ``services/``: core and helper services
+    - ``images/``: image and icons assets
+    - ``scripts/``: bower dependencies
+    - ``scss/``: sass styles generated into css folder
 
 Configurations
 --------------
@@ -39,5 +42,18 @@ All the panels files are placed here in the folder ``src/app/panels``, the panel
     - partials/index.html
     - config.js
     - menu.json `(only for root states)`
+    - state.json
     - translate.js
-    
+
+config.js
+~~~~~~~~~
+The panel configuration must be here, the file is a plain js file and must define the panel configuration, It starts with ``Configuration.[PANEL_NAME]``.
+
+* ``configs``: panel configuration
+    * TODO
+* ``forms``: forms validations
+    * TODO
+* ``list``: list structure and configuration `(only composite panels)`
+    * TODO
+* ``table``: table structure and configuration
+    * TODO

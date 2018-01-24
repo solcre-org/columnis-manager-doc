@@ -95,7 +95,10 @@
               <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Project Structure</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#configurations">Configurations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#panels">Panels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#panels">Panels</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#config-js">config.js</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="controllers.html">Controllers</a></li>
@@ -195,6 +198,9 @@
 </dd>
 </dl>
 </li>
+<li><code class="docutils literal"><span class="pre">images/</span></code>: image and icons assets</li>
+<li><code class="docutils literal"><span class="pre">scripts/</span></code>: bower dependencies</li>
+<li><code class="docutils literal"><span class="pre">scss/</span></code>: sass styles generated into css folder</li>
 </ul>
 </dd>
 </dl>
@@ -227,12 +233,51 @@
 <li>partials/index.html</li>
 <li>config.js</li>
 <li>menu.json <cite>(only for root states)</cite></li>
+<li>state.json</li>
 <li>translate.js</li>
 </ul>
 </dd>
 </dl>
 </li>
 </ul>
+<div class="section" id="config-js">
+<h3>config.js<a class="headerlink" href="#config-js" title="Permalink to this headline">¶</a></h3>
+<p>The panel configuration must be here, the file is a plain js file and must define the panel configuration, It starts with <code class="docutils literal"><span class="pre">Configuration.[PANEL_NAME]</span></code>.</p>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt><code class="docutils literal"><span class="pre">configs</span></code>: panel configuration</dt>
+<dd><ul class="first last">
+<li>TODO</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><code class="docutils literal"><span class="pre">forms</span></code>: forms validations</dt>
+<dd><ul class="first last">
+<li>TODO</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><code class="docutils literal"><span class="pre">list</span></code>: list structure and configuration <cite>(only composite panels)</cite></dt>
+<dd><ul class="first last">
+<li>TODO</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><code class="docutils literal"><span class="pre">table</span></code>: table structure and configuration</dt>
+<dd><ul class="first last">
+<li>TODO</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
 </div>
 </div>
 
