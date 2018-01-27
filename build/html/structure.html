@@ -245,9 +245,37 @@
 <p>The panel configuration must be here, the file is a plain js file and must define the panel configuration, It starts with <code class="docutils literal"><span class="pre">Configuration.[PANEL_NAME]</span></code>.</p>
 <ul class="simple">
 <li><dl class="first docutils">
-<dt><code class="docutils literal"><span class="pre">configs</span></code>: panel configuration</dt>
+<dt><code class="docutils literal"><span class="pre">config</span></code>: panel configuration</dt>
 <dd><ul class="first last">
-<li>TODO</li>
+<li><code class="docutils literal"><span class="pre">name</span></code>: string used for identify panel and it is used for set the placeholder image like <code class="docutils literal"><span class="pre">&lt;IMAGE_DIR&gt;/panel-icons/[name].svg</span></code></li>
+<li><code class="docutils literal"><span class="pre">placeholder</span></code>: sets the placeholder text</li>
+<li><code class="docutils literal"><span class="pre">description</span></code>: sets the placeholder title attribute value</li>
+<li><code class="docutils literal"><span class="pre">messages_prefix</span></code>: string used to identify loaders</li>
+<li><code class="docutils literal"><span class="pre">messages_list_prefix</span></code>: string used to identify list loaders <cite>(Composite panels)</cite></li>
+<li><code class="docutils literal"><span class="pre">endpoint</span></code>: resource uri without domain, it must be with $resource conventions</li>
+<li><code class="docutils literal"><span class="pre">endpointList</span></code>: resource uri without domain used in list, it must be with $resource conventions <cite>(Composite panels)</cite></li>
+<li><code class="docutils literal"><span class="pre">parent_field</span></code>: field name used to fetch items to table or grid, filtered by the list item <cite>(Composite panels)</cite></li>
+<li><code class="docutils literal"><span class="pre">file_upload</span></code>: enable the form data to the primary resource, it is used when the resource need file upload</li>
+<li><code class="docutils literal"><span class="pre">file_list_upload</span></code>: enable the form data to the list resource, it is used when the resource need file upload <cite>(Composite panels)</cite></li>
+<li><code class="docutils literal"><span class="pre">with_thumb</span></code>: enable table thumbs</li>
+<li><code class="docutils literal"><span class="pre">sortable_table</span></code>: enable the sorting functionality to the table or grid</li>
+<li><code class="docutils literal"><span class="pre">save_all_fields</span></code>: sets the fields that are sends in the request after saves sorting order</li>
+<li><code class="docutils literal"><span class="pre">sortable_field</span></code>: the object key where the sorting value are saved</li>
+<li><code class="docutils literal"><span class="pre">addTitles</span></code>: configure the modal title when adding, is a json object where the key is the modal id and the value is the title</li>
+<li><code class="docutils literal"><span class="pre">tabs</span></code>: configure and enables modal tabs, is a json where the key is the modal id and the value is an array with each tab title</li>
+<li><code class="docutils literal"><span class="pre">keep_list</span></code>: prevent reset list when initializes the panel <cite>(Composite panels)</cite></li>
+<li><code class="docutils literal"><span class="pre">blockInit</span></code>: prevent panel initial fetch</li>
+<li><code class="docutils literal"><span class="pre">blockListInit</span></code>: prevent panel list initial fetch <cite>(Composite panels)</cite></li>
+<li><code class="docutils literal"><span class="pre">deleteFields</span></code>: sets the fields that are sends in the request when deleting multiple items</li>
+<li><code class="docutils literal"><span class="pre">dynamicTable</span></code>: enable dynamic table mode, it load table columns and table headers dynamically from the object.data keys</li>
+<li><code class="docutils literal"><span class="pre">without_footer</span></code>: disable footer padding</li>
+<li><code class="docutils literal"><span class="pre">layout</span></code>: sets the layout, it can be <code class="docutils literal"><span class="pre">grid</span></code>, <code class="docutils literal"><span class="pre">list</span></code> or <code class="docutils literal"><span class="pre">table</span></code></li>
+<li><code class="docutils literal"><span class="pre">massive_fields</span></code>: sets the massive fields configuration, is a array of jsons with id and display keys, where id key is the field name and display are the label text</li>
+<li><code class="docutils literal"><span class="pre">disableAdd</span></code>: disable add button from placeholder and modal header</li>
+<li><code class="docutils literal"><span class="pre">disableSave</span></code>: disable save button form modal header</li>
+<li><code class="docutils literal"><span class="pre">disableModify</span></code>: disable modify button from modal header in detail mode</li>
+<li><code class="docutils literal"><span class="pre">customHeaderButton</span></code>: enable custom button in the modal header</li>
+<li><code class="docutils literal"><span class="pre">customHeaderButtonText</span></code>: sets the custom header button text in the modal header</li>
 </ul>
 </dd>
 </dl>
@@ -277,6 +305,45 @@
 </dl>
 </li>
 </ul>
+<p>Example config.js file (from a panel with composite directive):</p>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="nx">Configuration</span><span class="p">.</span><span class="nx">example</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;config&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;panel-example&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;placeholder&quot;</span><span class="o">:</span> <span class="s2">&quot;EXAMPLE_PLACEHOLDER_TRANSLATED&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Example text&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;messages_prefix&quot;</span><span class="o">:</span> <span class="s2">&quot;example&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;messages_list_prefix&quot;</span><span class="o">:</span> <span class="s2">&quot;list-example&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;endpoint&quot;</span><span class="o">:</span> <span class="s2">&quot;/examples/:id&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;endpointList&quot;</span><span class="o">:</span> <span class="s2">&quot;/examples/:exampleId/:id&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;parent_field&quot;</span><span class="o">:</span> <span class="s2">&quot;exampleId&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;file_upload&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;file_list_upload&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;with_thumb&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;sortable_table&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;save_all_fields&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;order&#39;</span> <span class="p">],</span>
+        <span class="s2">&quot;sortable_field&quot;</span><span class="o">:</span> <span class="s2">&quot;order&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;addTitles&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="mi">0</span><span class="o">:</span> <span class="s2">&quot;EXAMPLE_ADD_TITLE&quot;</span> <span class="p">},</span>
+        <span class="s2">&quot;tabs&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="mi">0</span><span class="o">:</span> <span class="p">[</span> <span class="s1">&#39;TAB_1&#39;</span><span class="p">,</span> <span class="s1">&#39;TAB_2&#39;</span> <span class="p">]</span> <span class="p">},</span>
+        <span class="s2">&quot;keep_list&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;blockInit&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;blockListInit&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;deleteFields&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="s1">&#39;id&#39;</span> <span class="p">],</span>
+        <span class="s2">&quot;dynamicTable&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;without_footer&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;layout&quot;</span><span class="o">:</span> <span class="s2">&quot;table&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;massive_fields&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="p">{</span> <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;exampleKey&quot;</span><span class="p">,</span> <span class="s2">&quot;display&quot;</span><span class="o">:</span> <span class="s2">&quot;EXAMPLE_KEY_LABEL&quot;</span> <span class="p">}</span> <span class="p">],</span>
+        <span class="s2">&quot;disableAdd&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;disableSave&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;disableModify&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;customHeaderButton&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;customHeaderButtonText&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;forms&quot;</span><span class="o">:</span> <span class="p">{},</span>
+    <span class="s2">&quot;list&quot;</span><span class="o">:</span> <span class="p">{},</span>
+    <span class="s2">&quot;table&quot;</span><span class="o">:</span> <span class="p">{}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </div>
 </div>
 </div>
