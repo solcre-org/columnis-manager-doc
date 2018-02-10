@@ -1,0 +1,573 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Panel Structure &mdash; Columnis Manager 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="_static/css/style.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Columnis Manager 1.0.0 documentation" href="index.html"/>
+        <link rel="next" title="Controllers" href="controllers.html"/>
+        <link rel="prev" title="Project Structure" href="structure.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Columnis Manager
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="structure.html">Project Structure</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Panel Structure</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#config-js">config.js</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#items-configuration">Items configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#trs-configuration">Trs configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#actions-configuration">Actions configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example">Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="controllers.html">Controllers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="directives.html">Directives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="services.html">Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="filters.html">Filters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="grunt.html">Grunt</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Columnis Manager</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Panel Structure</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/panel-structure.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="panel-structure">
+<h1>Panel Structure<a class="headerlink" href="#panel-structure" title="Permalink to this headline">¶</a></h1>
+<p>All the panels files are placed here in the folder <code class="docutils literal"><span class="pre">src/app/panels</span></code>, here are an explain of all required files and each configurations:</p>
+<div class="section" id="config-js">
+<h2>config.js<a class="headerlink" href="#config-js" title="Permalink to this headline">¶</a></h2>
+<p>The panel configuration must be here, the file is a plain js file and must define the panel configuration, It starts with <code class="docutils literal"><span class="pre">Configuration.[PANEL_NAME]</span></code>.</p>
+<ul>
+<li><dl class="first docutils">
+<dt><code class="docutils literal"><span class="pre">config</span></code>: panel configuration</dt>
+<dd><ul class="first last simple">
+<li><code class="docutils literal"><span class="pre">name</span></code>: string used for identify panel and it is used for set the placeholder image like <code class="docutils literal"><span class="pre">&lt;IMAGE_DIR&gt;/panel-icons/[name].svg</span></code></li>
+<li><code class="docutils literal"><span class="pre">placeholder</span></code>: sets the placeholder text</li>
+<li><code class="docutils literal"><span class="pre">description</span></code>: sets the placeholder title attribute value</li>
+<li><code class="docutils literal"><span class="pre">messages_prefix</span></code>: string used to identify loaders</li>
+<li><code class="docutils literal"><span class="pre">messages_list_prefix</span></code>: string used to identify list loaders <cite>(Composite panels)</cite></li>
+<li><code class="docutils literal"><span class="pre">endpoint</span></code>: resource uri without domain, it must be with $resource conventions</li>
+<li><code class="docutils literal"><span class="pre">endpointList</span></code>: resource uri without domain used in list, it must be with $resource conventions <cite>(Composite panels)</cite></li>
+<li><code class="docutils literal"><span class="pre">parent_field</span></code>: field name used to fetch items to table or grid, filtered by the list item <cite>(Composite panels)</cite></li>
+<li><code class="docutils literal"><span class="pre">file_upload</span></code>: enable the form data to the primary resource, it is used when the resource need file upload</li>
+<li><code class="docutils literal"><span class="pre">file_list_upload</span></code>: enable the form data to the list resource, it is used when the resource need file upload <cite>(Composite panels)</cite></li>
+<li><code class="docutils literal"><span class="pre">with_thumb</span></code>: enable table thumbs</li>
+<li><code class="docutils literal"><span class="pre">sortable_table</span></code>: enable the sorting functionality to the table or grid</li>
+<li><code class="docutils literal"><span class="pre">save_all_fields</span></code>: sets the fields that are sends in the request after saves sorting order</li>
+<li><code class="docutils literal"><span class="pre">sortable_field</span></code>: the object key where the sorting value are saved</li>
+<li><code class="docutils literal"><span class="pre">addTitles</span></code>: configure the modal title when adding, is a json object where the key is the modal id and the value is the title</li>
+<li><code class="docutils literal"><span class="pre">tabs</span></code>: configure and enables modal tabs, is a json where the key is the modal id and the value is an array with each tab title</li>
+<li><code class="docutils literal"><span class="pre">keep_list</span></code>: prevent reset list when initializes the panel <cite>(Composite panels)</cite></li>
+<li><code class="docutils literal"><span class="pre">blockInit</span></code>: prevent panel initial fetch</li>
+<li><code class="docutils literal"><span class="pre">blockListInit</span></code>: prevent panel list initial fetch <cite>(Composite panels)</cite></li>
+<li><code class="docutils literal"><span class="pre">deleteFields</span></code>: sets the fields that are sends in the request when deleting multiple items</li>
+<li><code class="docutils literal"><span class="pre">dynamicTable</span></code>: enable dynamic table mode, it load table columns and table headers dynamically from the object.data keys</li>
+<li><code class="docutils literal"><span class="pre">without_footer</span></code>: disable footer padding</li>
+<li><code class="docutils literal"><span class="pre">layout</span></code>: sets the layout, it can be <code class="docutils literal"><span class="pre">grid</span></code>, <code class="docutils literal"><span class="pre">list</span></code> or <code class="docutils literal"><span class="pre">table</span></code></li>
+<li><code class="docutils literal"><span class="pre">massive_fields</span></code>: sets the massive fields configuration, is a array of jsons with id and display keys, where id key is the field name and display are the label text</li>
+<li><code class="docutils literal"><span class="pre">disableAdd</span></code>: disable add button from placeholder and modal header</li>
+<li><code class="docutils literal"><span class="pre">disableSave</span></code>: disable save button form modal header</li>
+<li><code class="docutils literal"><span class="pre">disableModify</span></code>: disable modify button from modal header in detail mode</li>
+<li><code class="docutils literal"><span class="pre">customHeaderButton</span></code>: enable custom button in the modal header</li>
+<li><code class="docutils literal"><span class="pre">customHeaderButtonText</span></code>: sets the custom header button text in the modal header</li>
+<li><code class="docutils literal"><span class="pre">filterToApi</span></code>: sets to true, the filter functionality always requests to the api</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><code class="docutils literal"><span class="pre">forms</span></code>: forms validations, is a json object with key that have <code class="docutils literal"><span class="pre">idModal</span></code> and the value correspond to the validations</dt>
+<dd><ul class="first last simple">
+<li><dl class="first docutils">
+<dt><code class="docutils literal"><span class="pre">[ID_MODAL]</span></code>: must be an number, its corresponds to the <code class="docutils literal"><span class="pre">idModal</span></code> attribute in the <code class="docutils literal"><span class="pre">&lt;ui-form&gt;</span></code> directive</dt>
+<dd><ul class="first last">
+<li><code class="docutils literal"><span class="pre">name</span></code>: indicate the <code class="docutils literal"><span class="pre">name</span></code> attribute in the <code class="docutils literal"><span class="pre">&lt;ui-form&gt;</span></code> directive</li>
+<li><dl class="first docutils">
+<dt><code class="docutils literal"><span class="pre">validations</span></code>: is a json object with the key is the field name and the value is the validation</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt><code class="docutils literal"><span class="pre">[FIELD_NAME]</span></code>: json object with the field validations</dt>
+<dd><ul class="first last">
+<li><code class="docutils literal"><span class="pre">display</span></code>: set label to indicate the errors when the validations fails</li>
+<li><code class="docutils literal"><span class="pre">validations</span></code>: an array with the validations from <code class="docutils literal"><span class="pre">Configuration.form_validations.*</span></code>, it can be a function that return a boolean, the function recibe like argument the entire object</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><code class="docutils literal"><span class="pre">list</span></code>: list structure and configuration <cite>(only composite panels)</cite></dt>
+<dd><ul class="first last simple">
+<li><code class="docutils literal"><span class="pre">title</span></code>: set the list subtitle text</li>
+<li><code class="docutils literal"><span class="pre">trs</span></code>: just set as empty array, the panel clone this structure and here is where push de items</li>
+<li><code class="docutils literal"><span class="pre">config_item</span></code>: it must be a function that returns the configured item (go to configuration items section), and receives as argument, the old item, the new item and the composite service</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><code class="docutils literal"><span class="pre">table</span></code>: table structure and configuration</dt>
+<dd><ul class="first last">
+<li><p class="first"><code class="docutils literal"><span class="pre">ths</span></code>: is an array with the headers translations, this translations are important because are used like columns keys</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">trs</span></code>: just set as empty array, the panel clone this structure and here is where push de items</p>
+</li>
+<li><dl class="first docutils">
+<dt><code class="docutils literal"><span class="pre">highlights</span></code>: json that indicates the column width sizes, 1 is normal and 2 is more bigger</dt>
+<dd><ul class="first last simple">
+<li><code class="docutils literal"><span class="pre">[COLUMN_KEY]</span></code>: the default value is 1, and 2 is the double of normal width</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><code class="docutils literal"><span class="pre">title</span></code>: json that indicates the titles columns, this columns have another font color</dt>
+<dd><ul class="first last simple">
+<li><code class="docutils literal"><span class="pre">[COLUMN_KEY]</span></code>: the default is false, with a true value activate the title column</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><code class="docutils literal"><span class="pre">number</span></code>: is a json that indicates the numbers columns, this columns have less width and another text alignment</dt>
+<dd><ul class="first last simple">
+<li><code class="docutils literal"><span class="pre">[COLUMN_KEY]</span></code>: the default is false, with a true value activate the number column</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><code class="docutils literal"><span class="pre">order</span></code>: array with the sorting configurations, it is used to set the headers as sortable and build the footer sort select</dt>
+<dd><dl class="first docutils">
+<dt>[</dt>
+<dd><ul class="first last simple">
+<li><code class="docutils literal"><span class="pre">display</span></code>: it is used to build sorting select options and must be an text or translatable text</li>
+<li><code class="docutils literal"><span class="pre">column</span></code>: it must be the API sorting field, when the sorting go to the api, builds a query params with this value</li>
+<li><code class="docutils literal"><span class="pre">order</span></code>: set the sorting direction, it can be ASC or DESC</li>
+</ul>
+</dd>
+</dl>
+<p class="last">]</p>
+</dd>
+</dl>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">mobileIndexes</span></code>: is an optional array with column indexes that are visible when are in mobile device, the indexes corresponds to index into <code class="docutils literal"><span class="pre">ths</span></code> array</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">items_shown</span></code>: the length of mobile columns</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">pagination</span></code>: empty json object, the panel clone this structure and here is where push de items</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">config_tr</span></code>:  it must be a function that returns the configured tr (go to configuration trs section), and receives as argument, the old item, the new item and the composite service</p>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="section" id="items-configuration">
+<h3>Items configuration<a class="headerlink" href="#items-configuration" title="Permalink to this headline">¶</a></h3>
+<p>The idea behind this is return an tr updated with the new changes and set specific keys thar are used in the lists, modals and forms. This function must do this things:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Set the <code class="docutils literal"><span class="pre">id</span></code> field, is used by identify the row</li>
+<li>Set the <code class="docutils literal"><span class="pre">reference</span></code> field, is a title in the modal and when some confirmation is needed</li>
+<li>Set the <code class="docutils literal"><span class="pre">data</span></code> key, is the field listed by default in the list</li>
+<li>Set the <code class="docutils literal"><span class="pre">actions</span></code> key, is a json with specific structure (go to actions structure section), and indicates extra actions or disable default actions</li>
+<li>Set all the object keys one to one.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="trs-configuration">
+<h3>Trs configuration<a class="headerlink" href="#trs-configuration" title="Permalink to this headline">¶</a></h3>
+<p>The idea behind this is the same like items configurations, with some changes:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Set the <code class="docutils literal"><span class="pre">id</span></code> field, is used by identify the row</li>
+<li>Set the <code class="docutils literal"><span class="pre">reference</span></code> field, is a title in the modal and when some confirmation is needed</li>
+<li>Set the <code class="docutils literal"><span class="pre">filters</span></code> field (optional), to apply any filter to specific tr row, is an array with a json with type key (the name of the $filter) and params with the parameters, an important comment, this json must be in the index equals to td, to apply the filter successfully</li>
+<li>Set the <code class="docutils literal"><span class="pre">data</span></code> key, is an array with the columns values, the length of this array must much to the ths array length</li>
+<li>Set the <code class="docutils literal"><span class="pre">actions</span></code> key, is a json with specific structure (go to actions structure section), and indicates extra actions or disable default actions</li>
+<li>Set all the object keys one to one.</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="actions-configuration">
+<h3>Actions configuration<a class="headerlink" href="#actions-configuration" title="Permalink to this headline">¶</a></h3>
+<p>TODO</p>
+</div>
+<div class="section" id="example">
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<p>Example config.js file (from a panel with composite directive):</p>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="nx">Configuration</span><span class="p">.</span><span class="nx">example</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;config&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;panel-example&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;placeholder&quot;</span><span class="o">:</span> <span class="s2">&quot;EXAMPLE_PLACEHOLDER_TRANSLATED&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Example text&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;messages_prefix&quot;</span><span class="o">:</span> <span class="s2">&quot;example&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;messages_list_prefix&quot;</span><span class="o">:</span> <span class="s2">&quot;list-example&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;endpoint&quot;</span><span class="o">:</span> <span class="s2">&quot;/examples/:id&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;endpointList&quot;</span><span class="o">:</span> <span class="s2">&quot;/examples/:exampleId/:id&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;parent_field&quot;</span><span class="o">:</span> <span class="s2">&quot;exampleId&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;file_upload&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;file_list_upload&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;with_thumb&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;sortable_table&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;save_all_fields&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;order&#39;</span> <span class="p">],</span>
+        <span class="s2">&quot;sortable_field&quot;</span><span class="o">:</span> <span class="s2">&quot;order&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;addTitles&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="mi">0</span><span class="o">:</span> <span class="s2">&quot;EXAMPLE_ADD_TITLE&quot;</span> <span class="p">},</span>
+        <span class="s2">&quot;tabs&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="mi">0</span><span class="o">:</span> <span class="p">[</span> <span class="s1">&#39;TAB_1&#39;</span><span class="p">,</span> <span class="s1">&#39;TAB_2&#39;</span> <span class="p">]</span> <span class="p">},</span>
+        <span class="s2">&quot;keep_list&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;blockInit&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;blockListInit&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;deleteFields&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="s1">&#39;id&#39;</span> <span class="p">],</span>
+        <span class="s2">&quot;dynamicTable&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;without_footer&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;layout&quot;</span><span class="o">:</span> <span class="s2">&quot;table&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;massive_fields&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="p">{</span> <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;exampleKey&quot;</span><span class="p">,</span> <span class="s2">&quot;display&quot;</span><span class="o">:</span> <span class="s2">&quot;EXAMPLE_KEY_LABEL&quot;</span> <span class="p">}</span> <span class="p">],</span>
+        <span class="s2">&quot;disableAdd&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;disableSave&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;disableModify&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;customHeaderButton&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="s2">&quot;customHeaderButtonText&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span>
+        <span class="s2">&quot;filterToApi&quot;</span><span class="o">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;forms&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;0&quot;</span> <span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;exampleForm0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;validations&quot;</span> <span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;exampleField1&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;display&quot;</span><span class="o">:</span> <span class="s2">&quot;EXAMPLE_FIELD_LABEL&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;validations&quot;</span> <span class="o">:</span> <span class="p">[</span>
+                        <span class="nx">Configuration</span><span class="p">.</span><span class="nx">form_validations</span><span class="p">.</span><span class="nx">REQUIRED</span>
+                    <span class="p">]</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;1&quot;</span> <span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;exampleForm1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;validations&quot;</span> <span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;exampleOtherField&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;display&quot;</span><span class="o">:</span> <span class="s2">&quot;EXAMPLE_OTHER_FIELD_LABEL&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;validations&quot;</span> <span class="o">:</span> <span class="p">[</span>
+                        <span class="kd">function</span><span class="p">(</span><span class="nx">obj</span><span class="p">){</span> <span class="k">return</span> <span class="p">(</span><span class="nx">obj</span><span class="p">.</span><span class="nx">id</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">}</span>
+                    <span class="p">]</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;list&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;title&quot;</span><span class="o">:</span> <span class="s2">&quot;EXAMPLE_LIST_TITLE&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;trs&quot;</span><span class="o">:</span> <span class="p">[],</span>
+        <span class="s2">&quot;config_item&quot;</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">item</span><span class="p">,</span> <span class="nx">newItem</span><span class="p">,</span> <span class="nx">compositeService</span><span class="p">){</span>
+            <span class="nx">item</span><span class="p">.</span><span class="nx">id</span> <span class="o">=</span> <span class="nx">newItem</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span>
+            <span class="nx">item</span><span class="p">.</span><span class="nx">reference</span> <span class="o">=</span> <span class="nx">newItem</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+
+            <span class="nx">item</span><span class="p">.</span><span class="nx">data</span> <span class="o">=</span> <span class="nx">newItem</span><span class="p">.</span><span class="nx">name</span><span class="p">.</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;table&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;ths&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="s2">&quot;COLUMN_TEXT_1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;COLUMN_TEXT_2&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;COLUMN_TEXT_3&quot;</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;trs&quot;</span><span class="o">:</span> <span class="p">[],</span>
+        <span class="s2">&quot;highlights&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;COLUMN_TEXT_1&quot;</span><span class="o">:</span> <span class="mi">2</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;title&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;COLUMN_TEXT_1&quot;</span><span class="o">:</span> <span class="kc">true</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;number&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;COLUMN_TEXT_3&quot;</span><span class="o">:</span> <span class="kc">true</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;order&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;display&quot;</span><span class="o">:</span> <span class="s2">&quot;COLUMN_TEXT_1&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;column&quot;</span><span class="o">:</span> <span class="s2">&quot;exampleField1&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;order&quot;</span><span class="o">:</span> <span class="s1">&#39;ASC&#39;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;display&quot;</span><span class="o">:</span> <span class="s2">&quot;COLUMN_TEXT_1&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;column&quot;</span><span class="o">:</span> <span class="s2">&quot;exampleField1&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;order&quot;</span><span class="o">:</span> <span class="s1">&#39;DESC&#39;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;display&quot;</span><span class="o">:</span> <span class="s2">&quot;COLUMN_TEXT_2&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;column&quot;</span><span class="o">:</span> <span class="s2">&quot;exampleField2&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;order&quot;</span><span class="o">:</span> <span class="s1">&#39;ASC&#39;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;display&quot;</span><span class="o">:</span> <span class="s2">&quot;COLUMN_TEXT_2&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;column&quot;</span><span class="o">:</span> <span class="s2">&quot;exampleField2&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;order&quot;</span><span class="o">:</span> <span class="s1">&#39;DESC&#39;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;display&quot;</span><span class="o">:</span> <span class="s2">&quot;COLUMN_TEXT_3&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;column&quot;</span><span class="o">:</span> <span class="s2">&quot;exampleField3&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;order&quot;</span><span class="o">:</span> <span class="s1">&#39;ASC&#39;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;display&quot;</span><span class="o">:</span> <span class="s2">&quot;COLUMN_TEXT_3&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;column&quot;</span><span class="o">:</span> <span class="s2">&quot;exampleField3&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;order&quot;</span><span class="o">:</span> <span class="s1">&#39;DESC&#39;</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;items_shown&quot;</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s2">&quot;pagination&quot;</span><span class="o">:</span> <span class="p">{},</span>
+        <span class="s2">&quot;mobileIndexes&quot;</span><span class="o">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+        <span class="s2">&quot;config_tr&quot;</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">newData</span><span class="p">,</span> <span class="nx">service</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">data</span><span class="p">.</span><span class="nx">id</span> <span class="o">=</span> <span class="nx">newItem</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span>
+            <span class="nx">data</span><span class="p">.</span><span class="nx">reference</span> <span class="o">=</span> <span class="nx">newItem</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+            <span class="nx">data</span><span class="p">.</span><span class="nx">exampleField1</span> <span class="o">=</span> <span class="nx">newData</span><span class="p">.</span><span class="nx">exampleField1</span><span class="p">;</span>
+            <span class="nx">data</span><span class="p">.</span><span class="nx">exampleField2</span> <span class="o">=</span> <span class="nx">newData</span><span class="p">.</span><span class="nx">exampleField2</span><span class="p">;</span>
+            <span class="nx">data</span><span class="p">.</span><span class="nx">exampleField3</span> <span class="o">=</span> <span class="nx">newData</span><span class="p">.</span><span class="nx">exampleField3</span><span class="p">;</span>
+
+            <span class="nx">data</span><span class="p">.</span><span class="nx">data</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="nx">data</span><span class="p">.</span><span class="nx">exampleField1</span><span class="p">,</span>
+                <span class="nx">data</span><span class="p">.</span><span class="nx">exampleField2</span><span class="p">,</span>
+                <span class="nx">data</span><span class="p">.</span><span class="nx">exampleField3</span>
+            <span class="p">];</span>
+
+            <span class="nx">data</span><span class="p">.</span><span class="nx">actions</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;eye&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+                <span class="s2">&quot;eyeTitle&quot;</span><span class="o">:</span> <span class="s2">&quot;TITLE_TEXT_ON_HOVER&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;eyeAction&quot;</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">id</span><span class="p">,</span> <span class="nx">event</span><span class="p">,</span> <span class="nx">obj</span><span class="p">){</span>
+                    <span class="c1">//Call action from service</span>
+                    <span class="nx">service</span><span class="p">.</span><span class="nx">callAction</span><span class="p">(</span><span class="s1">&#39;eye&#39;</span><span class="p">,</span> <span class="nx">obj</span><span class="p">);</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="controllers.html" class="btn btn-neutral float-right" title="Controllers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="structure.html" class="btn btn-neutral" title="Project Structure" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Solcre.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

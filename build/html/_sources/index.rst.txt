@@ -9,6 +9,7 @@ Contents
    :maxdepth: 1
 
    structure
+   panel-structure
    controllers
    directives
    services

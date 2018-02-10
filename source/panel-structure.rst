@@ -1,0 +1,250 @@
+Panel Structure
+=================
+All the panels files are placed here in the folder ``src/app/panels``, here are an explain of all required files and each configurations:
+
+config.js
+----------
+The panel configuration must be here, the file is a plain js file and must define the panel configuration, It starts with ``Configuration.[PANEL_NAME]``.
+
+* ``config``: panel configuration
+    * ``name``: string used for identify panel and it is used for set the placeholder image like ``<IMAGE_DIR>/panel-icons/[name].svg``
+    * ``placeholder``: sets the placeholder text
+    * ``description``: sets the placeholder title attribute value
+    * ``messages_prefix``: string used to identify loaders
+    * ``messages_list_prefix``: string used to identify list loaders `(Composite panels)`
+    * ``endpoint``: resource uri without domain, it must be with $resource conventions
+    * ``endpointList``: resource uri without domain used in list, it must be with $resource conventions `(Composite panels)`
+    * ``parent_field``: field name used to fetch items to table or grid, filtered by the list item `(Composite panels)`
+    * ``file_upload``: enable the form data to the primary resource, it is used when the resource need file upload 
+    * ``file_list_upload``: enable the form data to the list resource, it is used when the resource need file upload `(Composite panels)`
+    * ``with_thumb``: enable table thumbs
+    * ``sortable_table``: enable the sorting functionality to the table or grid
+    * ``save_all_fields``: sets the fields that are sends in the request after saves sorting order
+    * ``sortable_field``: the object key where the sorting value are saved
+    * ``addTitles``: configure the modal title when adding, is a json object where the key is the modal id and the value is the title
+    * ``tabs``: configure and enables modal tabs, is a json where the key is the modal id and the value is an array with each tab title
+    * ``keep_list``: prevent reset list when initializes the panel `(Composite panels)`
+    * ``blockInit``: prevent panel initial fetch
+    * ``blockListInit``: prevent panel list initial fetch `(Composite panels)`
+    * ``deleteFields``: sets the fields that are sends in the request when deleting multiple items
+    * ``dynamicTable``: enable dynamic table mode, it load table columns and table headers dynamically from the object.data keys
+    * ``without_footer``: disable footer padding
+    * ``layout``: sets the layout, it can be ``grid``, ``list`` or ``table``
+    * ``massive_fields``: sets the massive fields configuration, is a array of jsons with id and display keys, where id key is the field name and display are the label text 
+    * ``disableAdd``: disable add button from placeholder and modal header
+    * ``disableSave``: disable save button form modal header
+    * ``disableModify``: disable modify button from modal header in detail mode
+    * ``customHeaderButton``: enable custom button in the modal header
+    * ``customHeaderButtonText``: sets the custom header button text in the modal header
+    * ``filterToApi``: sets to true, the filter functionality always requests to the api
+* ``forms``: forms validations, is a json object with key that have ``idModal`` and the value correspond to the validations
+    * ``[ID_MODAL]``: must be an number, its corresponds to the ``idModal`` attribute in the ``<ui-form>`` directive
+        * ``name``: indicate the ``name`` attribute in the ``<ui-form>`` directive
+        * ``validations``: is a json object with the key is the field name and the value is the validation
+            * ``[FIELD_NAME]``: json object with the field validations 
+                * ``display``: set label to indicate the errors when the validations fails
+                * ``validations``: an array with the validations from ``Configuration.form_validations.*``, it can be a function that return a boolean, the function recibe like argument the entire object
+* ``list``: list structure and configuration `(only composite panels)`
+    * ``title``: set the list subtitle text
+    * ``trs``: just set as empty array, the panel clone this structure and here is where push de items
+    * ``config_item``: it must be a function that returns the configured item (go to configuration items section), and receives as argument, the old item, the new item and the composite service
+* ``table``: table structure and configuration
+    * ``ths``: is an array with the headers translations, this translations are important because are used like columns keys
+    * ``trs``: just set as empty array, the panel clone this structure and here is where push de items
+    * ``highlights``: json that indicates the column width sizes, 1 is normal and 2 is more bigger
+        * ``[COLUMN_KEY]``: the default value is 1, and 2 is the double of normal width
+    * ``title``: json that indicates the titles columns, this columns have another font color
+        * ``[COLUMN_KEY]``: the default is false, with a true value activate the title column
+    * ``number``: is a json that indicates the numbers columns, this columns have less width and another text alignment
+        * ``[COLUMN_KEY]``: the default is false, with a true value activate the number column
+    * ``order``: array with the sorting configurations, it is used to set the headers as sortable and build the footer sort select
+        [
+            * ``display``: it is used to build sorting select options and must be an text or translatable text
+            * ``column``: it must be the API sorting field, when the sorting go to the api, builds a query params with this value
+            * ``order``: set the sorting direction, it can be ASC or DESC
+        ]
+    * ``mobileIndexes``: is an optional array with column indexes that are visible when are in mobile device, the indexes corresponds to index into ``ths`` array
+    * ``items_shown``: the length of mobile columns
+    * ``pagination``: empty json object, the panel clone this structure and here is where push de items
+    * ``config_tr``:  it must be a function that returns the configured tr (go to configuration trs section), and receives as argument, the old item, the new item and the composite service
+        
+Items configuration
+~~~~~~~~~~~~~~~~~~~~
+The idea behind this is return an tr updated with the new changes and set specific keys thar are used in the lists, modals and forms. This function must do this things:
+
+    * Set the ``id`` field, is used by identify the row
+    * Set the ``reference`` field, is a title in the modal and when some confirmation is needed
+    * Set the ``data`` key, is the field listed by default in the list
+    * Set the ``actions`` key, is a json with specific structure (go to actions structure section), and indicates extra actions or disable default actions
+    * Set all the object keys one to one.
+
+Trs configuration
+~~~~~~~~~~~~~~~~~~
+The idea behind this is the same like items configurations, with some changes:
+
+    * Set the ``id`` field, is used by identify the row
+    * Set the ``reference`` field, is a title in the modal and when some confirmation is needed
+    * Set the ``filters`` field (optional), to apply any filter to specific tr row, is an array with a json with type key (the name of the $filter) and params with the parameters, an important comment, this json must be in the index equals to td, to apply the filter successfully
+    * Set the ``data`` key, is an array with the columns values, the length of this array must much to the ths array length
+    * Set the ``actions`` key, is a json with specific structure (go to actions structure section), and indicates extra actions or disable default actions
+    * Set all the object keys one to one.
+
+Actions configuration
+~~~~~~~~~~~~~~~~~~~~~~
+The actions json is a configuration parsed in the ``ui-action-mover`` directive, and can add or disable actions. All the actions are placed at the same level. The base name is substracted from the actions css classes, example if the css class is .icon-action-eye, the base action name is ``eye``. To enable an action we need to found this base name an set this json keys:
+
+    * ``[BASE_NAME]``: boolean value to show or hide action
+    * ``[BASE_NAME]Title``: sets the title text when the mouse hover 
+    * ``[BASE_NAME]Disabled``: boolean value to disable the action (optional)
+    * ``[BASE_NAME]Order``: it can be used to preserv specific order (optional)
+    * ``[BASE_NAME]_state``: if is true the icon adds an .on class and take the theme default color instead of black
+    * ``[BASE_NAME]Action``: it must be a function that receive as argument the id, the event and the entire object, see the example below
+
+Example
+~~~~~~~~
+Example config.js file (from a panel with composite directive):
+
+.. code-block:: js
+
+    Configuration.example = {
+        "config": {
+            "name": "panel-example",
+            "placeholder": "EXAMPLE_PLACEHOLDER_TRANSLATED",
+            "description": "Example text",
+            "messages_prefix": "example",
+            "messages_list_prefix": "list-example",
+            "endpoint": "/examples/:id", 
+            "endpointList": "/examples/:exampleId/:id",
+            "parent_field": "exampleId",
+            "file_upload": false,
+            "file_list_upload": false,
+            "with_thumb": false,
+            "sortable_table": false,
+            "save_all_fields": [ 'id', 'order' ],
+            "sortable_field": "order",
+            "addTitles": { 0: "EXAMPLE_ADD_TITLE" },
+            "tabs": { 0: [ 'TAB_1', 'TAB_2' ] },
+            "keep_list": false,
+            "blockInit": false,
+            "blockListInit": false,
+            "deleteFields": [ 'id' ],
+            "dynamicTable": false,
+            "without_footer": false,
+            "layout": "table",
+            "massive_fields": [ { "id": "exampleKey", "display": "EXAMPLE_KEY_LABEL" } ],
+            "disableAdd": false,
+            "disableSave": false,
+            "disableModify": false,
+            "customHeaderButton": false,
+            "customHeaderButtonText": ""
+            "filterToApi": false
+        },
+        "forms": {
+            "0" : {
+                "name": "exampleForm0",
+                "validations" : {
+                    "exampleField1": {
+                        "display": "EXAMPLE_FIELD_LABEL",
+                        "validations" : [
+                            Configuration.form_validations.REQUIRED
+                        ]
+                    }
+                }
+            },
+            "1" : {
+                "name": "exampleForm1",
+                "validations" : {
+                    "exampleOtherField": {
+                        "display": "EXAMPLE_OTHER_FIELD_LABEL",
+                        "validations" : [
+                            function(obj){ return (obj.id > 0) }
+                        ]
+                    }
+                }
+            }
+        },
+        "list": {
+            "title": "EXAMPLE_LIST_TITLE",
+            "trs": [],
+            "config_item": function(item, newItem, compositeService){
+                item.id = newItem.id;
+                item.reference = newItem.name;
+
+                item.data = newItem.name.
+            }
+        },
+        "table": {
+            "ths": [
+                "COLUMN_TEXT_1",
+                "COLUMN_TEXT_2",
+                "COLUMN_TEXT_3"
+            ],
+            "trs": [],
+            "highlights": {
+                "COLUMN_TEXT_1": 2
+            },
+            "title": {
+                "COLUMN_TEXT_1": true
+            },
+            "number": {
+                "COLUMN_TEXT_3": true
+            },
+            "order": [
+                {
+                    "display": "COLUMN_TEXT_1",
+                    "column": "exampleField1",
+                    "order": 'ASC'
+                },
+                {
+                    "display": "COLUMN_TEXT_1",
+                    "column": "exampleField1",
+                    "order": 'DESC'
+                },
+                {
+                    "display": "COLUMN_TEXT_2",
+                    "column": "exampleField2",
+                    "order": 'ASC'
+                },
+                {
+                    "display": "COLUMN_TEXT_2",
+                    "column": "exampleField2",
+                    "order": 'DESC'
+                },
+                {
+                    "display": "COLUMN_TEXT_3",
+                    "column": "exampleField3",
+                    "order": 'ASC'
+                },
+                {
+                    "display": "COLUMN_TEXT_3",
+                    "column": "exampleField3",
+                    "order": 'DESC'
+                }
+            ],
+            "items_shown": 2,
+            "pagination": {},
+            "mobileIndexes": [0, 2],
+            "config_tr": function (data, newData, service) {
+                data.id = newItem.id;
+                data.reference = newItem.name;
+                data.exampleField1 = newData.exampleField1;
+                data.exampleField2 = newData.exampleField2;
+                data.exampleField3 = newData.exampleField3;
+                
+                data.data = [
+                    data.exampleField1,
+                    data.exampleField2,
+                    data.exampleField3
+                ];
+
+                data.actions = {
+                    "eye": true,
+                    "eyeTitle": "TITLE_TEXT_ON_HOVER",
+                    "eyeAction": function(id, event, obj){
+                        //Call action from service
+                        service.callAction('eye', obj);
+                    } 
+                }
+            }
+        }
+    }
